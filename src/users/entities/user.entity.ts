@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Card } from "src/cards/entities/card.entity";
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from "typeorm";
 
 @Entity()
 export class User {
@@ -16,4 +17,7 @@ export class User {
 
     @Column({default: 0.0})
     balance: number;
+
+    @OneToOne(()=>Card, card => card.user)
+    card: Card
 }

@@ -15,7 +15,7 @@ export class Card {
     @Column()
     expirationDate: string
 
-    @OneToOne(() => User, {onDelete: 'CASCADE'})
+    @OneToOne(() => User, user => user.card, {onDelete: 'CASCADE'})
     @JoinColumn()
     user: User
 }

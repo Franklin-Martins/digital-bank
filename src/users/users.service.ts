@@ -25,9 +25,11 @@ export class UsersService {
   }
 
   async findOne(id: number) {
-    const user = await this.userRepository.findOne({
-      where: { id }
-    });
+    const user = await this.userRepository
+    .createQueryBuilder('user')
+    .where({id})
+    .leftJoinAndSelect('user.card', 'card')
+    .getOne()
     
     return user;
   }

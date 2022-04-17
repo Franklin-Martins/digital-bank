@@ -15,8 +15,8 @@ export class CardsService {
   ){}
 
   async create(createCardDto: CreateCardDto) {
-    const user = await this.userService.findOne(createCardDto.userId);
-
+    const {...user} = await this.userService.findOne(createCardDto.userId);
+    
     if(!user) return new Error('User not found');
 
     const cardNumber = generateCardNumber(); 
