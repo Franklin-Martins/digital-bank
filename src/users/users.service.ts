@@ -29,6 +29,7 @@ export class UsersService {
     .createQueryBuilder('user')
     .where({id})
     .leftJoinAndSelect('user.card', 'card')
+    .leftJoinAndSelect('user.transactions', 'transaction')
     .getOne()
     
     return user;

@@ -1,5 +1,6 @@
 import { Card } from "src/cards/entities/card.entity";
-import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from "typeorm";
+import { Transaction } from "src/transactions/entities/transaction.entity";
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne, OneToMany } from "typeorm";
 
 @Entity()
 export class User {
@@ -20,4 +21,7 @@ export class User {
 
     @OneToOne(()=>Card, card => card.user)
     card: Card
+
+    @OneToMany(()=> Transaction, transaction => transaction.user)
+    transactions: Transaction[];
 }
